@@ -6,7 +6,7 @@
     <title>TPE 5</title>
 </head>
 <body>
-    <h1>: Décomposition en produit de facteurs premiers</h1>
+    <h1>Décomposition en produit de facteurs premiers</h1>
     <?php 
     extract($_GET);
     require_once("functions.php");

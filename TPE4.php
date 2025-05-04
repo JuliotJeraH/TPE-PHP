@@ -6,11 +6,11 @@
     <title>TPE 4</title>
 </head>
 <body>
-    <h1>Conversion d’un nombre en anglais</h1>
+    <h1>Conversion d’un nombre en anglais:</h1>
     <?php 
     extract($_GET);
     require_once("functions.php");
-    function IntToEnlish($n);
+    IntToEnlish($n);
     
     ?>
 </body>

@@ -116,7 +116,7 @@ function IntToEnlish($n){
     $dizaines = array("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety");
     
     if ($n < 10) {
-        return $unites[$n];
+        echo "$unites[$n]";
     } elseif ($n < 20) {
         foreach ($specials as $word => $value) {
             if ($n == $value) {
@@ -148,25 +148,25 @@ function IntToEnlish($n){
 }
 
 //===================== TPE 5 =====================//
-function DecompoProduitFact($n){
+function DecompoProduitFact($n) {
+    echo "$n : ";
 
-    echo "$n:";
+    $nbrPremier = array(2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97);
+    $resultat = [];
 
-    $nbrPremier=array(2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97);
-
-    for($i=0; $i<sizeof($nbrPremier); $i++){
-        $base=$nbrPremier[$i];
-        if ($n % $base == 0){
-            $exposant=0;
-            while ($n % $base == 0){
+    for ($i = 0; $i < sizeof($nbrPremier); $i++) {
+        $base = $nbrPremier[$i];
+        if ($n % $base == 0) {
+            $exposant = 0;
+            while ($n % $base == 0) {
                 $exposant++;
                 $n = $n / $base;
             }
-            echo "$base <sup>$exposant<sup>*";
-        }else{
-            echo "$base*";
+            $resultat[] = "$base<sup>$exposant</sup>";
         }
     }
+
+    echo implode(" * ", $resultat);
 }
 
 //===================== TPE 6 =====================//
