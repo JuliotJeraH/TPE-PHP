@@ -116,34 +116,50 @@ function IntToEnlish($n){
     $dizaines = array("", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety");
     
     if ($n < 10) {
-        echo "$unites[$n]";
+        echo $unites[$n];
     } elseif ($n < 20) {
         foreach ($specials as $word => $value) {
             if ($n == $value) {
-                echo "$word";
+                echo $word;
             }
         }
     } elseif ($n < 100) {
+        $unite = intval($n % 10);
+        $dizaine = intval($n / 10);
 
-        $unite=$unites[intval($n % 10)];
-        $dizaine=$dizaines[intval($n / 10)];
-        
-        echo "$dizaine-$unite";
+        echo $dizaines[$dizaine];
+        if ($unite > 0) {
+            echo "-" . $unites[$unite];
+        }
         
     } elseif ($n < 1000) {
-        $unite=$unites[intval($n % 10)];
-        $dizaine=$dizaines[intval($n / 10)];
-        $centaine=$unites[intval($n / 100)];
+        $unite = intval($n % 10);
+        $dizaine = intval(($n % 100) / 10);
+        $centaine = intval($n / 100);
 
-        echo "$centaine hundred $dizaine-$unite";
+        echo $unites[$centaine] . " hundred";
+        if ($dizaine > 0) {
+            echo " " . $dizaines[$dizaine];
+        }
+        if ($unite > 0) {
+            echo "-" . $unites[$unite];
+        }
     } else {
-        $unite=$unites[intval($n % 10)];
-        $dizaine=$dizaines[intval($n / 10)];
-        $centaine=$unites[intval($n / 100)];
-        $millier=$unites[intval($n / 1000)];
+        $unite = intval($n % 10);
+        $dizaine = intval(($n % 100) / 10);
+        $centaine = intval(($n % 1000) / 100);
+        $millier = intval($n / 1000);
 
-        echo "$millier thousand $centaine hundred $dizaine-$unite";
-        
+        echo $unites[$millier] . " thousand";
+        if ($centaine > 0) {
+            echo " " . $unites[$centaine] . " hundred";
+        }
+        if ($dizaine > 0) {
+            echo " " . $dizaines[$dizaine];
+        }
+        if ($unite > 0) {
+            echo "-" . $unites[$unite];
+        }
     }
 }
 
